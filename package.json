@@ -4,10 +4,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "lint:fix": "eslint . --fix ",
     "start": "npm run lint:fix && npx nodemon src/index.js",
     "format": "prettier --write .",
-    "lint": "eslint . ",
-    "lint:fix": "eslint . --fix "
+    "lint": "eslint . "
+   
   },
   "keywords": [],
   "author": "",

@@ -18,9 +18,10 @@ app.get('/ping', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
 });
 
 // jSzFhXItaF3kdbn5
+

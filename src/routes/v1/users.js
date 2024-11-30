@@ -1,8 +1,9 @@
 import express from 'express';
 
-import { signUp } from '../../controllers/userController.js';
-import { validate } from '../../validation/zodValidator.js';
-import { userSignupSchema } from '../../validation/userSchema.js';
+import { signIn,signUp } from '../../controllers/userController.js';
+import { userSigninSchema,userSignupSchema } from '../../validators/userSchema.js';
+import { validate } from '../../validators/zodValidator.js';
+
 const router = express.Router();
 
 // router.get('/', (req, res)=>{
@@ -12,5 +13,7 @@ const router = express.Router();
 // } );
 
 router.post('/signup',validate(userSignupSchema), signUp);
+
+router.post('/signin',validate(userSigninSchema), signIn);
 
 export default router;

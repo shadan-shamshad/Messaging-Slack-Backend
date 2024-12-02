@@ -3,10 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { JWT_SECRET } from '../config/serverConfig.js'
 import userRepository from '../repositories/userRepository.js'
-import { 
-    CustomErrorResponse, 
-    InternalErrorResponse 
-} from  '../utils/common/responseObjects.js';
+import { customErrorResponse, internalErrorResponse } from  '../utils/common/responseObjects.js';
 
 export const isAuthenticated = async (req, res, next) => {
     try{
@@ -15,7 +12,7 @@ export const isAuthenticated = async (req, res, next) => {
           // If token is not present
         if(!token){
                 return res.status(StatusCodes.FORBIDDEN).json(
-                    CustomErrorResponse({
+                    customErrorResponse({
                         explanation: "Invalid data sent from the client",
                         message: "No auth token provided"
                     })
@@ -27,7 +24,7 @@ export const isAuthenticated = async (req, res, next) => {
         //If token response is not working fine
         if(!response){
             return res.status(StatusCodes.FORBIDDEN).json(
-                CustomErrorResponse({
+                customErrorResponse({
                     explanation: "Invalid data sent from the client",
                     message: "Invalid auth token provided"
                 })
@@ -42,7 +39,7 @@ export const isAuthenticated = async (req, res, next) => {
         console.log('Auth middleware error', error);
         if(error.name === 'jsonWebTokenError'){
             return res.status(StatusCodes.FORBIDDEN).json(
-                    CustomErrorResponse({
+                customErrorResponse({
                         explanation: "Invalid data sent from the client",
                         message: "Invalid auth token provided"
                 })
@@ -51,7 +48,7 @@ export const isAuthenticated = async (req, res, next) => {
 
         // if the error is coming of something else
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(
-            InternalErrorResponse(error)
+            internalErrorResponse(error)
         );
     }
 }

@@ -5,7 +5,7 @@ export const internalErrorResponse = (error) => {
         err: error,
         data: {},
         message: 'Internal Server error'
-    }
+    };
 };
 
 

@@ -3,7 +3,10 @@ import jwt from 'jsonwebtoken';
 
 import { JWT_SECRET } from '../config/serverConfig.js'
 import userRepository from '../repositories/userRepository.js'
-import { customErrorResponse, internalErrorResponse } from  '../utils/common/responseObjects.js';
+import { 
+    customErrorResponse,
+    internalErrorResponse 
+} from  '../utils/common/responseObjects.js';
 
 export const isAuthenticated = async (req, res, next) => {
     try{
@@ -13,8 +16,7 @@ export const isAuthenticated = async (req, res, next) => {
         if(!token){
                 return res.status(StatusCodes.FORBIDDEN).json(
                     customErrorResponse({
-                        explanation: "Invalid data sent from the client",
-                        message: "No auth token provided"
+                      message: "No auth token provided"
                     })
                 );
           }

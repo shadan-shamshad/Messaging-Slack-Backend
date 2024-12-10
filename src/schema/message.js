@@ -9,19 +9,19 @@ const messageSchema = new mongoose.Schema({
     image:{
         type: String
         },
-    ChannelId: {
+    channelId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Channel',
         required: [true, "Channel id is required"]        
         },
-    SenderId: {
+    senderId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, "Sender id is required"]   
         },
     workspaceId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'workspace',
+        ref: 'Workspace',
         required: [true, "Workspace id is required"]
     }
 });

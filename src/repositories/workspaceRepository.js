@@ -8,17 +8,18 @@ import crudRepository from './crudRepository.js';
 
 const workspaceRepository = {
     ...crudRepository(Workspace),
-    getWorkspaceDetailsById: async function (workspaceId) {
-        const workspace = await Workspace.findById(workspaceId).populate('members.memberId', 'username email avatar').populate('channels');
-        
-        // if not found workspace
-     
+    getWorkspaceDetailsById: async function (workspaceId){
+        const workspace = await Workspace.findById(workspaceId)
+        .populate('members.memberId', 'username email avatar')
+        .populate('channels');
+      // if not found workspace
         return workspace;
     },
 
-   
     getWorkspaceByName: async function (workspaceName) {
-        const workspace = await Workspace.findOne({name: workspaceName});
+        const workspace = await Workspace.findOne(
+        {name: workspaceName}
+    );
         
         // if not found workspace
         if(!workspace){
@@ -67,7 +68,7 @@ const workspaceRepository = {
 
         const isMemberAlreadyPartOfWorkspace = workspace.members.find(
             (member) => member.memberId == memberId
-        );
+          );
 
         if(isMemberAlreadyPartOfWorkspace){
             throw new ClientError({
@@ -97,8 +98,7 @@ const workspaceRepository = {
             });
         }
 
-        const isChannelAlreadyPartOfWorkspace = workspace.channels.find(
-            (channel) => channel.name === channelName
+        const isChannelAlreadyPartOfWorkspace = workspace.channels.find((channel) => channel.name === channelName
         );
 
         if(isChannelAlreadyPartOfWorkspace){
@@ -111,8 +111,8 @@ const workspaceRepository = {
        
         const channel = await channelRepository.create({
             name: channelName,
-            workspaceId: workspaceId    
-        });
+           workspaceId: workspaceId
+          });
 
         workspace.channels.push(channel);
         await  workspace.save();

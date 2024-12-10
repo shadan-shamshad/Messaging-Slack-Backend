@@ -39,7 +39,7 @@ export const isAuthenticated = async (req, res, next) => {
           
     }catch(error){
         console.log('Auth middleware error', error);
-        if(error.name === 'jsonWebTokenError'){
+        if(error.name === 'JsonWebTokenError'){
             return res.status(StatusCodes.FORBIDDEN).json(
                 customErrorResponse({
                         explanation: "Invalid data sent from the client",
@@ -49,9 +49,9 @@ export const isAuthenticated = async (req, res, next) => {
         }
 
         // if the error is coming of something else
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(
-            internalErrorResponse(error)
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json(internalErrorResponse(error)
         );
     }
-}
+};
 

@@ -17,3 +17,7 @@ export const JWT_EXPIRY = process.env.JWT_EXPIRY || '1d';
 export const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
 
 export const MAIL_ID = process.env.MAIL_ID;
+
+export const REDIS_PORT = process.env.REDIS_PORT ||  6379;
+
+export const REDIS_HOST = process.env.REDIS_HOST ||  'localhost';

@@ -29,3 +29,5 @@ const messageSchema = new mongoose.Schema({
  const Message = mongoose.model('Message', messageSchema);
 
 export default Message;
+
+// What are the properties which will be queried a lot on which we should prepare an index and then we try to prepare an indexes correspondent to and also tell me how you can prepare those in mongoose

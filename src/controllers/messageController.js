@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 
-import { getMessagesService } from '../services/messageService.js';
+import { getMessagesService } from '../service/messageService.js';
 import {
   customErrorResponse,
   internalErrorResponse,

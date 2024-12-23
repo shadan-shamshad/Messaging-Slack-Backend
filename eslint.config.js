@@ -1,7 +1,6 @@
 import pluginJs from '@eslint/js';
-import SimpleImportSort from 'eslint-plugin-simple-import-sort';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
-
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
@@ -9,7 +8,7 @@ export default [
       globals: globals.node
     },
     plugins: {
-      'simple-import-sort': SimpleImportSort
+      'simple-import-sort': simpleImportSort
     },
     rules: {
       'simple-import-sort/imports': 'error',

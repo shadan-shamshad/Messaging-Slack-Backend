@@ -1,4 +1,5 @@
 
+import cors from 'cors';
 import express from 'express';
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
@@ -10,7 +11,6 @@ import { PORT } from './config/serverConfig.js';
 import channelSocketHandlers from './controllers/channelSocketController.js';
 import messageSocketHandlers from './controllers/messageSocketController.js';
 import apiRouter from './routes/apiRouter.js';
-import cors from 'cors';
 
 const app = express();
 const server = createServer(app);
